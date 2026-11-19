@@ -409,9 +409,37 @@ img {
 .hero-description {
   font-size: var(--font-size-lg);
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-md);
   max-width: 500px;
   line-height: 1.7;
+}
+
+.hero-tagline {
+  max-width: 500px;
+  margin: 0 0 var(--spacing-2xl);
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+}
+
+.hero-role {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 5px;
+  background: var(--highlight);
+  vertical-align: -0.12em;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-buttons {

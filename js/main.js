@@ -306,6 +306,52 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(type, 800);
   }
 
+  // ===== Cycling Role Effect in Hero =====
+
+  function setupRoleTypingEffect() {
+    const roleElement = document.getElementById('hero-role');
+    if (!roleElement) return;
+
+    const roles = [
+      'Web Developer',
+      'Frontend Developer',
+      'Backend Developer',
+      'UI/UX Designer',
+      'Quality Assurance (QA)'
+    ];
+
+    let roleIndex = 0;
+    let characterIndex = 0;
+    let isDeleting = false;
+
+    function updateRole() {
+      const currentRole = roles[roleIndex];
+
+      if (isDeleting) {
+        characterIndex--;
+      } else {
+        characterIndex++;
+      }
+
+      roleElement.textContent = currentRole.substring(0, characterIndex);
+
+      let delay = isDeleting ? 45 : 75;
+
+      if (!isDeleting && characterIndex === currentRole.length) {
+        isDeleting = true;
+        delay = 1400;
+      } else if (isDeleting && characterIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        delay = 350;
+      }
+
+      setTimeout(updateRole, delay);
+    }
+
+    setTimeout(updateRole, 1400);
+  }
+
   // ===== Initialize Everything =====
 
   handleNavbarScroll();
@@ -313,6 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setupScrollAnimations();
   setupContactForm();
   setupBackToTop();
+  setupRoleTypingEffect();
 
   // Navbar scroll listener
   window.addEventListener('scroll', function () {
